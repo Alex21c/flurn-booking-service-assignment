@@ -1,0 +1,637 @@
+{
+	"info": {
+		"_postman_id": "3db463f7-d271-4f86-a142-425f8156f9cf",
+		"name": "flurn-booking-service-assignment",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "32540147"
+	},
+	"item": [
+		{
+			"name": "localhost",
+			"item": [
+				{
+					"name": "User",
+					"item": [
+						{
+							"name": "registerNewUser",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"username\": \"alex21c\",\r\n  \"firstName\": \"Abhishek\",\r\n  \"lastName\": \"kumar\",\r\n  \"email\": \"admin@alex21c.com\",\r\n  \"mobile\": \"8278782787\",\r\n  \"password\": \"admin123\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:4000/api/v1/user/registerNewUser",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "4000",
+									"path": [
+										"api",
+										"v1",
+										"user",
+										"registerNewUser"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "login",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"usernameOrEmailOrMobile\": \"alex21c\",\r\n  \"password\": \"admin123\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:4000/api/v1/user/login",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "4000",
+									"path": [
+										"api",
+										"v1",
+										"user",
+										"login"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Upload",
+					"item": [
+						{
+							"name": "uploadSeats",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "csvFile",
+											"type": "file",
+											"src": "/C:/Users/MahamayaComputers/Documents/Testing/flurn-booking-service-assignment/SampleDataCsvFiles/Seats.csv"
+										}
+									]
+								},
+								"url": {
+									"raw": "http://localhost:4000/api/v1/uploadDefaultDataIntoDbFromCsvFile/uploadSeats",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "4000",
+									"path": [
+										"api",
+										"v1",
+										"uploadDefaultDataIntoDbFromCsvFile",
+										"uploadSeats"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "uploadSeatsPricingData",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "csvFile",
+											"type": "file",
+											"src": "/C:/Users/MahamayaComputers/Documents/Testing/flurn-booking-service-assignment/SampleDataCsvFiles/SeatsPricing.csv"
+										}
+									]
+								},
+								"url": {
+									"raw": "http://localhost:4000/api/v1/uploadDefaultDataIntoDbFromCsvFile/uploadSeatsPricingData",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "4000",
+									"path": [
+										"api",
+										"v1",
+										"uploadDefaultDataIntoDbFromCsvFile",
+										"uploadSeatsPricingData"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Bookings",
+					"item": [
+						{
+							"name": "create-a-new-booking",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NmJjODhlMDdlZTA0MzY5NTdjOTJmNjgiLCJmaXJzdE5hbWUiOiJBYmhpc2hlayIsImlhdCI6MTcyMzc4NTM1MywiZXhwIjoxNzIzODcxNzUzfQ.4zFCEQRZAfvYsYt22kybvhg02tvYXDVVBtXc7oLynzo",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"bookedSeatsIds\": [\"377239121-4\"]\r\n    \r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://flurn-booking-service-assignment.onrender.com/api/v1/booking/create-a-new-booking",
+									"protocol": "https",
+									"host": [
+										"flurn-booking-service-assignment",
+										"onrender",
+										"com"
+									],
+									"path": [
+										"api",
+										"v1",
+										"booking",
+										"create-a-new-booking"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "retrieve-bookings",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NmJjODhlMDdlZTA0MzY5NTdjOTJmNjgiLCJmaXJzdE5hbWUiOiJBYmhpc2hlayIsImlhdCI6MTcyMzc4NTM1MywiZXhwIjoxNzIzODcxNzUzfQ.4zFCEQRZAfvYsYt22kybvhg02tvYXDVVBtXc7oLynzo",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"usernameOrEmailOrMobile\": \"admin@alex21c.com\"\r\n    \r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://flurn-booking-service-assignment.onrender.com/api/v1/booking/retrieve-bookings",
+									"protocol": "https",
+									"host": [
+										"flurn-booking-service-assignment",
+										"onrender",
+										"com"
+									],
+									"path": [
+										"api",
+										"v1",
+										"booking",
+										"retrieve-bookings"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Seat",
+					"item": [
+						{
+							"name": "get-seat-pricing",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NmJjODhlMDdlZTA0MzY5NTdjOTJmNjgiLCJmaXJzdE5hbWUiOiJBYmhpc2hlayIsImlhdCI6MTcyMzc4NTM1MywiZXhwIjoxNzIzODcxNzUzfQ.4zFCEQRZAfvYsYt22kybvhg02tvYXDVVBtXc7oLynzo",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"seatId\": \"377239121-4\"\r\n    \r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://flurn-booking-service-assignment.onrender.com/api/v1/seat/get-seat-pricing",
+									"protocol": "https",
+									"host": [
+										"flurn-booking-service-assignment",
+										"onrender",
+										"com"
+									],
+									"path": [
+										"api",
+										"v1",
+										"seat",
+										"get-seat-pricing"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "get-all-seats",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NmJjODhlMDdlZTA0MzY5NTdjOTJmNjgiLCJmaXJzdE5hbWUiOiJBYmhpc2hlayIsImlhdCI6MTcyMzc4NTM1MywiZXhwIjoxNzIzODcxNzUzfQ.4zFCEQRZAfvYsYt22kybvhg02tvYXDVVBtXc7oLynzo",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"seatId\": \"377239121-4\"\r\n    \r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:4000/api/v1/seat/get-all-seats",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "4000",
+									"path": [
+										"api",
+										"v1",
+										"seat",
+										"get-all-seats"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "render",
+			"item": [
+				{
+					"name": "User",
+					"item": [
+						{
+							"name": "registerNewUser",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"username\": \"alex21c\",\r\n  \"firstName\": \"Abhishek\",\r\n  \"lastName\": \"kumar\",\r\n  \"email\": \"admin@alex21c.com\",\r\n  \"mobile\": \"8278782787\",\r\n  \"password\": \"admin123\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://flurn-booking-service-assignment.onrender.com/api/v1/user/registerNewUser",
+									"protocol": "https",
+									"host": [
+										"flurn-booking-service-assignment",
+										"onrender",
+										"com"
+									],
+									"path": [
+										"api",
+										"v1",
+										"user",
+										"registerNewUser"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "login",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"usernameOrEmailOrMobile\": \"alex21c\",\r\n  \"password\": \"admin123\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://flurn-booking-service-assignment.onrender.com/api/v1/user/login",
+									"protocol": "https",
+									"host": [
+										"flurn-booking-service-assignment",
+										"onrender",
+										"com"
+									],
+									"path": [
+										"api",
+										"v1",
+										"user",
+										"login"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Upload",
+					"item": [
+						{
+							"name": "uploadSeats",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "csvFile",
+											"type": "file",
+											"src": "/C:/Users/MahamayaComputers/Documents/Testing/flurn-booking-service-assignment/SampleDataCsvFiles/Seats.csv"
+										}
+									]
+								},
+								"url": {
+									"raw": "https://flurn-booking-service-assignment.onrender.com/api/v1/uploadDefaultDataIntoDbFromCsvFile/uploadSeats",
+									"protocol": "https",
+									"host": [
+										"flurn-booking-service-assignment",
+										"onrender",
+										"com"
+									],
+									"path": [
+										"api",
+										"v1",
+										"uploadDefaultDataIntoDbFromCsvFile",
+										"uploadSeats"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "uploadSeatsPricingData",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "csvFile",
+											"type": "file",
+											"src": "/C:/Users/MahamayaComputers/Documents/Testing/flurn-booking-service-assignment/SampleDataCsvFiles/SeatsPricing.csv"
+										}
+									]
+								},
+								"url": {
+									"raw": "https://flurn-booking-service-assignment.onrender.com/api/v1/uploadDefaultDataIntoDbFromCsvFile/uploadSeatsPricingData",
+									"protocol": "https",
+									"host": [
+										"flurn-booking-service-assignment",
+										"onrender",
+										"com"
+									],
+									"path": [
+										"api",
+										"v1",
+										"uploadDefaultDataIntoDbFromCsvFile",
+										"uploadSeatsPricingData"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Bookings",
+					"item": [
+						{
+							"name": "create-a-new-booking",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NmJmMTk2YTBjMTY5OGE3NGYxYWY4MTgiLCJmaXJzdE5hbWUiOiJBYmhpc2hlayIsImlhdCI6MTcyMzgwMDEyNCwiZXhwIjoxNzIzODg2NTI0fQ.i9GSLihfTvWmlWpe0aoCc04xUQytNSSVphYgun3OCCs",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"bookedSeatsIds\": [\"554266047-9\", \"006890170-4\", \"726092574-4\"]\r\n    \r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://flurn-booking-service-assignment.onrender.com/api/v1/booking/create-a-new-booking",
+									"protocol": "https",
+									"host": [
+										"flurn-booking-service-assignment",
+										"onrender",
+										"com"
+									],
+									"path": [
+										"api",
+										"v1",
+										"booking",
+										"create-a-new-booking"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "retrieve-bookings",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NmJmMTk2YTBjMTY5OGE3NGYxYWY4MTgiLCJmaXJzdE5hbWUiOiJBYmhpc2hlayIsImlhdCI6MTcyMzgwMDEyNCwiZXhwIjoxNzIzODg2NTI0fQ.i9GSLihfTvWmlWpe0aoCc04xUQytNSSVphYgun3OCCs",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"usernameOrEmailOrMobile\": \"admin@alex21c.com\"\r\n    \r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://flurn-booking-service-assignment.onrender.com/api/v1/booking/retrieve-bookings",
+									"protocol": "https",
+									"host": [
+										"flurn-booking-service-assignment",
+										"onrender",
+										"com"
+									],
+									"path": [
+										"api",
+										"v1",
+										"booking",
+										"retrieve-bookings"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Seat",
+					"item": [
+						{
+							"name": "get-seat-pricing",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NmJmMTk2YTBjMTY5OGE3NGYxYWY4MTgiLCJmaXJzdE5hbWUiOiJBYmhpc2hlayIsImlhdCI6MTcyMzgwMDEyNCwiZXhwIjoxNzIzODg2NTI0fQ.i9GSLihfTvWmlWpe0aoCc04xUQytNSSVphYgun3OCCs",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"seatId\": \"726092574-4\"\r\n    \r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://flurn-booking-service-assignment.onrender.com/api/v1/seat/get-seat-pricing",
+									"protocol": "https",
+									"host": [
+										"flurn-booking-service-assignment",
+										"onrender",
+										"com"
+									],
+									"path": [
+										"api",
+										"v1",
+										"seat",
+										"get-seat-pricing"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "get-all-seats",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NmJmMTk2YTBjMTY5OGE3NGYxYWY4MTgiLCJmaXJzdE5hbWUiOiJBYmhpc2hlayIsImlhdCI6MTcyMzgwMDEyNCwiZXhwIjoxNzIzODg2NTI0fQ.i9GSLihfTvWmlWpe0aoCc04xUQytNSSVphYgun3OCCs",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"seatId\": \"377239121-4\"\r\n    \r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://flurn-booking-service-assignment.onrender.com/api/v1/seat/get-all-seats",
+									"protocol": "https",
+									"host": [
+										"flurn-booking-service-assignment",
+										"onrender",
+										"com"
+									],
+									"path": [
+										"api",
+										"v1",
+										"seat",
+										"get-all-seats"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		}
+	]
+}

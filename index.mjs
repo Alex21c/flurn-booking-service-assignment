@@ -6,15 +6,15 @@ import mongoose from "mongoose";
 import UploadDefaultDataIntoDbFromCsvFileRouter from "./Routes/uploadDefaultDataIntoDbFromCsvFile.Route.mjs";
 import UserRoute from "./Routes/UserRoute.mjs";
 import BookingRoute from "./Routes/BookingRoute.mjs";
+import SeatRoute from "./Routes/SeatRoute.mjs";
 
 const PORT = process.env.PORT || 4000;
 const app = e();
 // Req logging
 app.use(morgan("dev"));
-console.log(process.env.MONGODB_CONNECTION_STRING_LOCALHOST);
 // Making connection with DB
 mongoose
-  .connect(process.env.MONGODB_CONNECTION_STRING_LOCALHOST)
+  .connect(process.env.MONGODB_CONNECTION_STRING)
   .then(() => {
     console.log("Connection Established with Database!");
   })
@@ -37,6 +37,7 @@ app.use(
 );
 app.use("/api/v1/user", UserRoute);
 app.use("/api/v1/booking", BookingRoute);
+app.use("/api/v1/seat", SeatRoute);
 
 // Error handling middleware
 app.use((err, req, res, next) => {

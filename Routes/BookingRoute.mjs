@@ -5,9 +5,14 @@ import BookingInputDataValidationMiddleware from "../Middlewares/BookingInputDat
 
 const BookingRoute = e.Router();
 BookingRoute.post(
-  "/createANewBooking",
+  "/create-a-new-booking",
   passport.authenticate("jwt", { session: false }),
   BookingInputDataValidationMiddleware,
   BookingController.createANewBooking
+);
+BookingRoute.get(
+  "/retrieve-bookings",
+  passport.authenticate("jwt", { session: false }),
+  BookingController.retrieveBookings
 );
 export default BookingRoute;

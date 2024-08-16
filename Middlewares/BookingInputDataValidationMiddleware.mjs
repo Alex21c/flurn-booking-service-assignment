@@ -1,5 +1,11 @@
 import CustomError from "../Utils/CustomError.mjs";
 import SeatsModel from "../Models/SeatsModel.mjs";
+async function markIsBookedAsFalse(seat_identifier) {
+  const seat = await SeatsModel.findOne({ seat_identifier });
+  seat.is_booked = false;
+  seat.save();
+}
+
 export default async function BookingInputDataValidationMiddleware(
   req,
   res,
@@ -21,7 +27,8 @@ export default async function BookingInputDataValidationMiddleware(
 
     try {
       // now checking if all of these seats are not booked yet
-      const promises = bookedSeatsIds.map((seatId) => {
+      const promises = bookedSeatsIds.map(async (seatId) => {
+        // await markIsBookedAsFalse(seatId); // for testing purpose only
         return new Promise(async (resolve, reject) => {
           try {
             const seat = await SeatsModel.findOne({ seat_identifier: seatId });
@@ -29,6 +36,7 @@ export default async function BookingInputDataValidationMiddleware(
               throw new Error(`provided seatId: ${seatId} is invalid`);
             }
             // is it booked?
+            console.log(seat.is_booked);
             if (seat.is_booked) {
               throw new Error(`provided seatId: ${seatId} is booked already!`);
             }
